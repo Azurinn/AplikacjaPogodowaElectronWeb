@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background: #000;
+    color: #fff;
+}
+
+body.dark-mode .card {
+    background: linear-gradient(135deg, #333, #111);
+    color: #ddd;
+    border: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+    width: 90%;
+    max-height: 95vh;
+    max-width: 470px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #fff;
+    margin: 20px auto 0;
+    border-radius: 20px;
+    padding: 20px 25px;
+    text-align: center;
+    position: relative;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    max-width: 250px;
+    border-radius: 30px;
+    flex: 1;
+    margin: 16px;
+    font-size: 18px;
+}
+
+.search button {
+    border: none;
+    outline: none;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.search button + button {
+    margin-left: 10px; /* Odstęp między przyciskami */
+}
+
+.search button img {
+    width: 32px;
+}
+
+.weatherIcon {
+    width: 170px;
+    margin: 30px;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-bottom: -10px;
+}
+
+.weather h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.humidity, .wind {
+    font-size: 28px;
+    margin-top: -6px;
+}
+
+.currentWeather {
+    display: none;
+}
+
+.error {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Przełączniki */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: -20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.sliderRound {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.sliderRound:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .sliderRound {
+    background-color: #2196F3;
+}
+
+input:focus + .sliderRound {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .sliderRound:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.sliderRound {
+    border-radius: 34px;
+}
+
+.sliderRound:before {
+    border-radius: 50%;
+}
+
+/* Stylizacja umiejscowienia przełączników */
+.switches {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Dodane style dla emotek */
+.sliderDarkMode:before {
+    content: '🌞';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+input:checked + .sliderDarkMode:before {
+    content: '🌜';
+    transform: translateX(26px);
+}
+
+.sliderWeatherMode:before {
+    content: '1';
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+input:checked + .sliderWeatherMode:before {
+    content: '7';
+    color: black;
+    transform: translateX(26px);
+}
+
+
+/* Stylizacja umiejscowienia 7days */
+.sevenDaysWeather {
+    display: none;
+}
+
+.sevenDaysWeather h2 {
+
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.dayWeather {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.dayWeather .day {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dayWeather .temperature {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+}
+
+.dayWeather .icon {
+    flex: 1;
+    text-align: right;
+    font-size: 24px;
+}
+
+.dayWeather img {
+    width: 40px;
+    text-align: center;
+}
