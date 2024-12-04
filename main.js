@@ -20,7 +20,7 @@ app.whenReady().then(createWindow);
 
 ipcMain.handle('get-geolocation', async () => {
     try {
-        const apiKey = 'AIzaSyB8-kDNOkkxlG60C3WwPY-KW4tzhKgFxWI';
+        const apiKey = '';
         const response = await axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`);
         return response.data;
     } catch (error) {
